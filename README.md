@@ -1,6 +1,6 @@
 # Mini-curso hands-on Kubernetes.
 
-## Para prepara o ambiente do mini-curso faça:
+## Para preparar o ambiente do mini-curso faça:
 
 1. Instale o Docker no Linux (as root)
 ```bash
