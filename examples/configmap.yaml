@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custom-frontpage
+  namespace: minicurso
+data:
+  index.html: |-
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>My Cool new Frontpage</title>
+    </head>
+    <body>
+        <center>
+            <h1>This is my new SUPER cool Frontpage.</h1>
+        </center>
+    </body>
+    </html>

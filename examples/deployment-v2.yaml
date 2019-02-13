@@ -1,0 +1,60 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-v2
+  namespace: minicurso
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  strategy:
+    type: "RollingUpdate"
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: requena/minik8s-stress
+        resources:
+          requests:
+            memory: "25Mi"
+            cpu: "50m"
+          limits:
+            memory: "100Mi"
+            cpu: "200m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+#          initialDelaySeconds: 60
+          periodSeconds: 20
+          failureThreshold: 5
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+ #         initialDelaySeconds: 60
+          timeoutSeconds: 10
+          failureThreshold: 5
+          periodSeconds: 60
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: custom-frontpage
+            mountPath: /usr/share/nginx/html/
+      volumes:
+        - name: custom-frontpage
+          configMap:
+            name: custom-frontpage
+            items:
+              - key: index.html
+                path: index.html
