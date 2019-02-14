@@ -9,7 +9,7 @@
 
 2. Faça download do binários do Kubectl
 ```bash
-  curl -O https://bit.ly/2AzqNwv -o kubectl
+  curl -L https://bit.ly/2AzqNwv -o kubectl
   mv kubectl /usr/local/bin/kubectl
   chmod +x /usr/local/bin/kubectl
 ```

@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: nginx
   namespace: minicurso
-  label:
+  labels:
     app: nginx
 spec:
   containers:
